@@ -1,7 +1,14 @@
+package tests;
+
 public class AdvancedCalculator {
 
     // Calculates the power of a number
     public double power(double base, int exponent) {
+        //Add check for division by zero: FIXES
+        if(base == 0 && exponent < 0) {
+
+            throw new ArithmeticException("Can't raise 0 to a negative exponent");
+        }
         if (exponent < 0) {
             return 1 / Math.pow(base, -exponent);
         }
@@ -21,7 +28,8 @@ public class AdvancedCalculator {
         if (number <= 1) {
             return false;
         }
-        for (int i = 2; i < Math.sqrt(number); i++) {
+        //We use i <=Math.sqrt(number)' to check up to the square root because no factors are larger than this
+        for (int i = 2; i <= Math.sqrt(number); i++) {
             if (number % i == 0) {
                 return false;
             }
