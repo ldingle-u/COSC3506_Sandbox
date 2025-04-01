@@ -1,3 +1,4 @@
+//Calculator that calculates factorial, exponents and checks if a number is prime
 public class AdvancedCalculator {
 
     // Calculates the power of a number
@@ -5,6 +6,7 @@ public class AdvancedCalculator {
         if (exponent < 0) {
             return 1 / Math.pow(base, -exponent);
         }
+        // Return a double, represents base raised to the exponent
         return Math.pow(base, exponent);
     }
 
@@ -35,6 +37,7 @@ public class AdvancedCalculator {
             throw new IllegalArgumentException("Factorial is undefined for negative numbers");
         }
         int result = 1;
+        // Iteratively calculates factorial in an ascending fashion
         for (int i = 1; i <= number; i++) {
             result *= i;
         }
