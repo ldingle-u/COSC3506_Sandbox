@@ -33,6 +33,7 @@ public class AdvancedCalculator {
     public int factorial(int number) {
         if (number < 0) {
             throw new IllegalArgumentException("Factorial is undefined for negative numbers");
+            //throws an exception for a negative number
         }
         int result = 1;
         for (int i = 1; i <= number; i++) {
