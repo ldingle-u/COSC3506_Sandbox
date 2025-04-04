@@ -19,7 +19,7 @@ public class Testing {
     public void testPowerNegativeExponent() {
         assertEquals(0.125, calculator.power(2, -3), 0.0001);
     }
-
+//have also added new exception for this case in oue calculator class
     @Test(expected = IllegalArgumentException.class)
     public void testPowerZeroBaseNegativeExponent() {
         calculator.power(0, -1);
@@ -68,7 +68,7 @@ public class Testing {
     public void testFactorialWithNegativeNumber() {
         calculator.factorial(-3);
     }
-
+//since BigInteger was used 20! should not be the problem now
     @Test
     public void testFactorialWithLargeNumber() {
         // 20! = 2432902008176640000

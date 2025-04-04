@@ -6,7 +6,7 @@ import java.math.BigInteger;
 public class AdvancedCalculator {
 
     // Calculates the power of a number
-   //this improvised method will now check for some exceptions like 0^0 and  the negative power of zero
+   //this improvised method will now check for some exceptions like 0^0 and throws exception for the negative power of zero
     public double power(double base, int exponent) {
     	if (base == 0 && exponent == 0) {
             throw new IllegalArgumentException("Undefine 0^0 is not possible to calculate "); }
