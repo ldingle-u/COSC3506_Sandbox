@@ -42,7 +42,7 @@ public class AdvancedCalculator {
     }
 
     // Calculates factorial of a number
-   //this method now uses BigInteger which helps in computation of larger factorial numbers.
+   //this method now uses BigInteger which helps in computation of larger factorial numbers like 20 .
     public BigInteger factorial(int number) {
         if (number < 0) {
             throw new IllegalArgumentException("Factorial is undefined for negative numbers");
