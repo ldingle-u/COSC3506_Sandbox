@@ -1,8 +1,20 @@
+// i copied the file to eclipse and made changes there and refelected those changes here where they were made.
+
+
+import java.math.BigInteger;
+
 public class AdvancedCalculator {
 
     // Calculates the power of a number
+   //this improvised method will now check for some exceptions like 0^0 and  the negative power of zero
     public double power(double base, int exponent) {
-        if (exponent < 0) {
+    	if (base == 0 && exponent == 0) {
+            throw new IllegalArgumentException("Undefine 0^0 is not possible to calculate "); }
+    	
+         else if (exponent < 0) {
+        	if (base == 0) {
+        		throw new IllegalArgumentException("Cannot calculate negative power to the 0");
+        	}
             return 1 / Math.pow(base, -exponent);
         }
         return Math.pow(base, exponent);
@@ -30,13 +42,14 @@ public class AdvancedCalculator {
     }
 
     // Calculates factorial of a number
-    public int factorial(int number) {
+   //this method now uses BigInteger which helps in computation of larger factorial numbers.
+    public BigInteger factorial(int number) {
         if (number < 0) {
             throw new IllegalArgumentException("Factorial is undefined for negative numbers");
         }
-        int result = 1;
+        BigInteger result = BigInteger.ONE ;
         for (int i = 1; i <= number; i++) {
-            result *= i;
+            result = result.multiply(BigInteger.valueOf(i));
         }
         return result;
     }
