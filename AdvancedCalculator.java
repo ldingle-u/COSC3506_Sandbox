@@ -1,8 +1,18 @@
+// changes made for assignment by Bivek Chuwain
+
+import java.math.BigInteger;
+
 public class AdvancedCalculator {
 
-    // Calculates the power of a number
+    // Calculates the power of a number and making sure proper error are thrown for special cases
     public double power(double base, int exponent) {
-        if (exponent < 0) {
+	if (base == 0 && exponent == 0) {
+            throw new IllegalArgumentException("Undefine 0^0 is not possible to calculate "); }
+        else if (exponent < 0) {
+		if (base == 0) {
+        		throw new IllegalArgumentException("Cannot calculate negative power to the 0");
+        	}
+
             return 1 / Math.pow(base, -exponent);
         }
         return Math.pow(base, exponent);
@@ -29,14 +39,15 @@ public class AdvancedCalculator {
         return true;
     }
 
-    // Calculates factorial of a number
-    public int factorial(int number) {
+    // Calculates factorial of a number and added biginteger for efficiency
+
+    public BigInteger factorial(int number) {
         if (number < 0) {
             throw new IllegalArgumentException("Factorial is undefined for negative numbers");
         }
-        int result = 1;
+        BigInteger result = BigInteger.ONE ;
         for (int i = 1; i <= number; i++) {
-            result *= i;
+            result = result.multiply(BigInteger.valueOf(i));
         }
         return result;
     }
