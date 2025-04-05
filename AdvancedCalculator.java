@@ -36,7 +36,7 @@ public class AdvancedCalculator {
     }
 
     // Calculates factorial of a number
-    // Changed to return long to store larfer numbers
+    // Changed to return long to store larger numbers
     public long factorial(int number) {
         if (number < 0) {
             throw new IllegalArgumentException("Factorial is undefined for negative numbers");
