@@ -1,7 +1,7 @@
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-public class AdvancedCalculatorTestHS {
+public class AdvancedCalculatorTestGK {
 
     @Test
     public void testPower() {
