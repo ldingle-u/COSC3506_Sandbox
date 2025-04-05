@@ -2,15 +2,11 @@ public class AdvancedCalculator {
 
     // Calculates the power of a number
     public double power(double base, int exponent) {
-        if (base == 0 && exponent < 0) {
-            throw new ArithmeticException("Cannot raise zero to a negative power");
-        }
         if (exponent < 0) {
             return 1 / Math.pow(base, -exponent);
         }
         return Math.pow(base, exponent);
     }
-
 
     // Calculates the square root of a number
     public double squareRoot(double number) {
@@ -34,15 +30,14 @@ public class AdvancedCalculator {
     }
 
     // Calculates factorial of a number
-    public long factorial(int number) {
+    public int factorial(int number) {
         if (number < 0) {
             throw new IllegalArgumentException("Factorial is undefined for negative numbers");
         }
-        long result = 1;
+        int result = 1;
         for (int i = 1; i <= number; i++) {
             result *= i;
         }
         return result;
     }
-
 }
