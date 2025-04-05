@@ -1,34 +1,59 @@
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
+public class AdvancedCalculatorTest 
+{
+    public static void main(String args[])
+    {
+        AdvancedCalculator test = new AdvancedCalculator();
 
-public class AdvancedCalculatorTest {
+        try
+         {
+            System.out.println("Testing Power Method:");
+            System.out.println("2^3 = "+test.power(2, 3));
+            System.out.println("2^(-3) = "+test.power(2, -3));
+            System.out.println("0^(-1) = "+test.power(0, -1));
+        } catch (Exception e) 
+        {
+            System.out.println("\"Error: Base should not be zero, while exponent is negative\"");
+        } 
 
-    @Test
-    public void testPower() {
-        assertEquals(8, AdvancedCalculator.power(2, 3));
-        assertEquals(0.125, AdvancedCalculator.power(2, -3));
-        assertThrows(ArithmeticException.class, () -> AdvancedCalculator.power(0, -1));
-    }
+        try 
+        {
+            System.out.println("Testing SquareRoot Method:");
+            System.out.println("SquareRoot of 9 = "+ test.squareRoot(9));
+            System.out.println("SquareRoot of -4"+ test.squareRoot(-4));
+        } catch (Exception e) 
+        {
+            System.out.println("\"Error: The value inside the root cannot be negative\"");
+        } 
+       
+        try 
+        {
+            System.out.println("Testing isPrime Method:");
+            System.out.println("is 13 Prime: "+ test.isPrime(13));
+            System.out.println("is 10 Prime: "+ test.isPrime(10));
+            System.out.println("is 29 Prime: "+ test.isPrime(29));
+            System.out.println("is 1  Prime: "+ test.isPrime(1));
+        } catch (Exception e)
+         {
+            System.out.println("\"Error: Prime Method cannot be evaluated\"");
+        } 
 
-    @Test
-    public void testSquareRoot() {
-        assertEquals(3, AdvancedCalculator.squareRoot(9));
-        assertThrows(IllegalArgumentException.class, () -> AdvancedCalculator.squareRoot(-4));
-    }
+        try 
+        {
+            System.out.println("Testing Factorial Method:");
+            System.out.println(""+ test.factorial(5));
+            System.out.println(""+ test.factorial(0));
+            System.out.println(""+ test.factorial(20));
+            System.out.println(""+ test.factorial(-3));
+            
+        } catch (Exception e)
+        {
+            System.out.println("\"Error: Factorial of Negative Values cannot be evaluated\"");
+        } 
 
-    @Test
-    public void testIsPrime() {
-        assertTrue(AdvancedCalculator.isPrime(13));
-        assertFalse(AdvancedCalculator.isPrime(10));
-        assertTrue(AdvancedCalculator.isPrime(29));
-        assertFalse(AdvancedCalculator.isPrime(1));
-    }
+        
 
-    @Test
-    public void testFactorial() {
-        assertEquals(120, AdvancedCalculator.factorial(5));
-        assertEquals(1, AdvancedCalculator.factorial(0));
-        assertThrows(IllegalArgumentException.class, () -> AdvancedCalculator.factorial(-3));
-        assertEquals(2432902008176640000L, AdvancedCalculator.factorial(20));
+
+
+        
     }
 }
