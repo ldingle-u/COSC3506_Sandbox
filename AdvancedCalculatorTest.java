@@ -1,34 +1,93 @@
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class AdvancedCalculatorTest {
 
-    @Test
-    public void testPower() {
-        assertEquals(8, AdvancedCalculator.power(2, 3));
-        assertEquals(0.125, AdvancedCalculator.power(2, -3));
-        assertThrows(ArithmeticException.class, () -> AdvancedCalculator.power(0, -1));
+    private AdvancedCalculator calculator;
+
+    @BeforeEach
+    void setUp() {
+        calculator = new AdvancedCalculator();
     }
 
     @Test
-    public void testSquareRoot() {
-        assertEquals(3, AdvancedCalculator.squareRoot(9));
-        assertThrows(IllegalArgumentException.class, () -> AdvancedCalculator.squareRoot(-4));
+    void testPowerPositiveExponent() {
+        double result = calculator.power(2, 3);
+        assertEquals(8.0, result, 0.0001);
     }
 
     @Test
-    public void testIsPrime() {
-        assertTrue(AdvancedCalculator.isPrime(13));
-        assertFalse(AdvancedCalculator.isPrime(10));
-        assertTrue(AdvancedCalculator.isPrime(29));
-        assertFalse(AdvancedCalculator.isPrime(1));
+    void testPowerNegativeExponent() {
+        double result = calculator.power(2, -3);
+        assertEquals(0.125, result, 0.0001);
     }
 
     @Test
-    public void testFactorial() {
-        assertEquals(120, AdvancedCalculator.factorial(5));
-        assertEquals(1, AdvancedCalculator.factorial(0));
-        assertThrows(IllegalArgumentException.class, () -> AdvancedCalculator.factorial(-3));
-        assertEquals(2432902008176640000L, AdvancedCalculator.factorial(20));
+    void testPowerZeroBaseNegativeExponentThrowsException() {
+        Exception exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> calculator.power(0, -1)
+        );
+        assertEquals("Can't raise zero to a negative power - that's undefined", exception.getMessage());
+    }
+
+    @Test
+    void testSquareRootOfNine() {
+        double result = calculator.squareRoot(9);
+        assertEquals(3.0, result, 0.0001);
+    }
+
+    @Test
+    void testSquareRootNegativeNumberThrowsException() {
+        Exception exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> calculator.squareRoot(-4)
+        );
+        assertEquals("Cannot calculate square root of a negative number", exception.getMessage());
+    }
+
+    @Test
+    void testIsPrime13() {
+        assertTrue(calculator.isPrime(13));
+    }
+
+    @Test
+    void testIsPrime10() {
+        assertFalse(calculator.isPrime(10));
+    }
+
+    @Test
+    void testIsPrime29() {
+        assertTrue(calculator.isPrime(29));
+    }
+
+    @Test
+    void testIsPrime1() {
+        assertFalse(calculator.isPrime(1));
+    }
+
+    @Test
+    void testFactorial5() {
+        assertEquals(120L, calculator.factorial(5));
+    }
+
+    @Test
+    void testFactorial0() {
+        assertEquals(1L, calculator.factorial(0));
+    }
+
+    @Test
+    void testFactorialNegativeThrowsException() {
+        Exception exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> calculator.factorial(-3)
+        );
+        assertEquals("Factorial is undefined for negative numbers", exception.getMessage());
+    }
+
+    @Test
+    void testFactorial20() {
+        assertEquals(2432902008176640000L, calculator.factorial(20));
     }
 }
