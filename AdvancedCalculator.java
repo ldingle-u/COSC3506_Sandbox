@@ -1,43 +1,32 @@
 public class AdvancedCalculator {
 
-    // Calculates the power of a number
-    public double power(double base, int exponent) {
-        if (exponent < 0) {
-            return 1 / Math.pow(base, -exponent);
-        }
+    public static double power(double base, int exponent) {
+        if (base == 0 && exponent < 0)
+            throw new ArithmeticException("Cannot raise 0 to a negative power.");
         return Math.pow(base, exponent);
     }
 
-    // Calculates the square root of a number
-    public double squareRoot(double number) {
-        if (number < 0) {
-            throw new IllegalArgumentException("Cannot calculate square root of a negative number");
-        }
-        return Math.sqrt(number);
+    public static double squareRoot(double num) {
+        if (num < 0)
+            throw new IllegalArgumentException("Cannot take square root of negative number.");
+        return Math.sqrt(num);
     }
 
-    // Checks if a number is prime
-    public boolean isPrime(int number) {
-        if (number <= 1) {
+    public static boolean isPrime(int num) {
+        if (num <= 1)
             return false;
-        }
-        for (int i = 2; i < Math.sqrt(number); i++) {
-            if (number % i == 0) {
+        for (int i = 2; i <= Math.sqrt(num); i++)
+            if (num % i == 0)
                 return false;
-            }
-        }
         return true;
     }
 
-    // Calculates factorial of a number
-    public int factorial(int number) {
-        if (number < 0) {
-            throw new IllegalArgumentException("Factorial is undefined for negative numbers");
-        }
-        int result = 1;
-        for (int i = 1; i <= number; i++) {
+    public static long factorial(int n) {
+        if (n < 0)
+            throw new IllegalArgumentException("Factorial is undefined for negative numbers.");
+        long result = 1;
+        for (int i = 2; i <= n; i++)
             result *= i;
-        }
         return result;
     }
 }
