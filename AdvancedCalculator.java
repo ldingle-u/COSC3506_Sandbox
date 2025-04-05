@@ -1,7 +1,13 @@
+import java.math.BigInteger;
+
 public class AdvancedCalculator {
 
     // Calculates the power of a number
     public double power(double base, int exponent) {
+        // Error cannot divide by zero if base is zero and exponent is less than one
+        if (base == 0 && exponent < 0) {
+            throw new IllegalArgumentException("Cannot divide by zero");
+        }
         if (exponent < 0) {
             return 1 / Math.pow(base, -exponent);
         }
@@ -30,11 +36,13 @@ public class AdvancedCalculator {
     }
 
     // Calculates factorial of a number
-    public int factorial(int number) {
+    // Changed to return long to store larfer numbers
+    public long factorial(int number) {
         if (number < 0) {
             throw new IllegalArgumentException("Factorial is undefined for negative numbers");
         }
-        int result = 1;
+        // Converted it to a long to hold larger numbers
+        long result = 1;
         for (int i = 1; i <= number; i++) {
             result *= i;
         }
