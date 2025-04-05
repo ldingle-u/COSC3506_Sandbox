@@ -1,3 +1,5 @@
+package src;
+
 public class AdvancedCalculator {
 
     // Calculates the power of a number
