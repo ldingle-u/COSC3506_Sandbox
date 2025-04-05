@@ -1,10 +1,13 @@
 public class AdvancedCalculator {
 
-    public static double power(double base, int exponent) {
-        if (base == 0 && exponent < 0)
-            throw new ArithmeticException("Cannot raise 0 to a negative power.");
-        return Math.pow(base, exponent);
-    }
+	public static double power(double base, int exponent) {
+	    // Check if the base is 0 and exponent is negative
+	    if (base == 0 && exponent < 0) {
+	        throw new IllegalArgumentException("0 to negative power is undefined");
+	    }
+	    return Math.pow(base, exponent);  // Use Math.pow to calculate the power
+	}
+
 
     public static double squareRoot(double num) {
         if (num < 0)
