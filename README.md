@@ -1,6 +1,6 @@
 # COSC3506_Sandbox
 
-Process:
+Process:<br />
 1 - Clone repository, create a personal branch off main (format: studentName_test)<br />
 2 - Write your test class<br />
 3 - Stage, commit changes<br />
