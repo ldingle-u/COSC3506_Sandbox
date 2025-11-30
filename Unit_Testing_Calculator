@@ -1,0 +1,48 @@
+public  class Main{
+    public static void main(String[] args) {
+        AdvancedCalculator advancedCalculator=new AdvancedCalculator();
+        System.out.println("The power of the number");
+        try{
+            System.out.println(advancedCalculator.power(2,3));
+            System.out.println(advancedCalculator.power(2,-3));
+            System.out.println(advancedCalculator.power(0,-1));
+
+
+        }catch (Exception e){
+            System.out.println("please check the number the power cannot be calculated");
+        }
+        System.out.println();
+        System.out.println("The square Root of the number");
+        try{
+            System.out.println(advancedCalculator.squareRoot(9));
+            System.out.println(advancedCalculator.squareRoot(-4));
+
+        }catch (Exception e){
+            System.out.println("please check the number the square cannot be calculated ");
+        }
+        System.out.println();
+        System.out.println("The prime Number");
+        try{
+            System.out.println(advancedCalculator.isPrime(13));
+            System.out.println(advancedCalculator.isPrime(10));
+            System.out.println(advancedCalculator.isPrime(29));
+            System.out.println(advancedCalculator.isPrime(1));
+
+        }catch (Exception e){
+            System.out.println("please check the number invalid number ");
+        }
+        System.out.println();
+        System.out.println("The Factorial Number");
+        try{
+            System.out.println(advancedCalculator.factorial(5));
+            System.out.println(advancedCalculator.factorial(0));
+            System.out.println(advancedCalculator.factorial(-3));
+            System.out.println(advancedCalculator.factorial(20));
+
+        }catch (Exception e){
+            System.out.println("The number is too big to compute ");
+        }
+
+    }
+
+}
