@@ -1,0 +1,89 @@
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+public class AdvancedCalculatorTest {
+
+    AdvancedCalculator calc = new AdvancedCalculator();
+
+    @Test
+    public void testPowerPositive() {
+        int base = 2; // extra variable just to show steps
+        int exp = 3;
+        assertEquals(8, calc.Power(base, exp));
+    }
+
+    @Test
+    public void testPowerNegativeExponent() {
+        assertEquals(0.125, calc.Power(2, -3), 0.0001);
+    }
+
+    @Test
+    public void testPowerZeroNegative() {
+        assertThrows(ArithmeticException.class, () -> {
+            calc.Power(0, -1);
+        });
+    }
+
+     // SquareRoot Tests
+
+    @Test
+    public void testSquareRootPositive() {
+        double result = calc.SquareRoot(9); // extra step
+        assertEquals(3.0, result);
+    }
+
+    @Test
+    public void testSquareRootNegative() {
+        assertThrows(ArithmeticException.class, () -> {
+            calc.SquareRoot(-4);
+        });
+    }
+
+
+     // IsPrime Tests
+
+    @Test
+    public void testIsPrime13() {
+        assertTrue(calc.IsPrime(13));
+    }
+
+    @Test
+    public void testIsPrime10() {
+        assertFalse(calc.IsPrime(10));
+    }
+
+    @Test
+    public void testIsPrime29() {
+        assertTrue(calc.IsPrime(29));
+    }
+
+    @Test
+    public void testIsPrime1() {
+        assertFalse(calc.IsPrime(1));
+    }
+
+
+     // Factorial Tests
+
+    @Test
+    public void testFactorial5() {
+        int ans = calc.Factorial(5);
+        assertEquals(120, ans);
+    }
+
+    @Test
+    public void testFactorialZero() {
+        assertEquals(1, calc.Factorial(0));
+    }
+
+    @Test
+    public void testFactorialNegative() {
+        assertThrows(ArithmeticException.class, () -> calc.Factorial(-3));
+    }
+
+    @Test
+    public void testFactorial20() {
+        long expected = 2432902008176640000L; // checking large output
+        assertEquals(expected, calc.Factorial(20));
+    }
+}
