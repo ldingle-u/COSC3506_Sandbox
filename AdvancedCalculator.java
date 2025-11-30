@@ -1,4 +1,5 @@
 public class AdvancedCalculator {
+// Behaviour: 0 with negative exponent throws ArithmeticException (tested in JUnit).
 
     public static double power(double base, int exponent) {
         if (base == 0 && exponent < 0)
