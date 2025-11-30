@@ -5,19 +5,19 @@ public  class Main{
         try{
             System.out.println(advancedCalculator.power(2,3));
             System.out.println(advancedCalculator.power(2,-3));
-            System.out.println(advancedCalculator.power(0,-1));
+            System.out.println(advancedCalculator.power(0,-1));// ISSUE FOUND 
 
 
-        }catch (Exception e){
+        }catch (Exception e){//exception handler
             System.out.println("please check the number the power cannot be calculated");
         }
         System.out.println();
         System.out.println("The square Root of the number");
         try{
             System.out.println(advancedCalculator.squareRoot(9));
-            System.out.println(advancedCalculator.squareRoot(-4));
+            System.out.println(advancedCalculator.squareRoot(-4));//ISSUE FOUND
 
-        }catch (Exception e){
+        }catch (Exception e){//exception handler
             System.out.println("please check the number the square cannot be calculated ");
         }
         System.out.println();
@@ -28,7 +28,7 @@ public  class Main{
             System.out.println(advancedCalculator.isPrime(29));
             System.out.println(advancedCalculator.isPrime(1));
 
-        }catch (Exception e){
+        }catch (Exception e){//exception handler 
             System.out.println("please check the number invalid number ");
         }
         System.out.println();
@@ -37,9 +37,9 @@ public  class Main{
             System.out.println(advancedCalculator.factorial(5));
             System.out.println(advancedCalculator.factorial(0));
             System.out.println(advancedCalculator.factorial(-3));
-            System.out.println(advancedCalculator.factorial(20));
+            System.out.println(advancedCalculator.factorial(20));//issue found for number being too big
 
-        }catch (Exception e){
+        }catch (Exception e){//exception handler
             System.out.println("The number is too big to compute ");
         }
 
