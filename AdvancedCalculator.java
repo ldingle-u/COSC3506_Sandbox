@@ -1,32 +1,50 @@
+
+package com.calculator;
+
 public class AdvancedCalculator {
 
-    public static double power(double base, int exponent) {
-        if (base == 0 && exponent < 0)
-            throw new ArithmeticException("Cannot raise 0 to a negative power.");
-        return Math.pow(base, exponent);
+    public double power(double base, double exponent) {
+      
+        if (base == 0 && exponent < 0) {
+            throw new IllegalArgumentException("Invalid input: 0 cannot be raised to a negative power.");
+        }
+        return Math.pow(base, exponent); 
     }
 
-    public static double squareRoot(double num) {
-        if (num < 0)
-            throw new IllegalArgumentException("Cannot take square root of negative number.");
-        return Math.sqrt(num);
+    public double squareRoot(double number) {
+      
+        if (number < 0) {
+            throw new IllegalArgumentException("Invalid input: Cannot calculate the square root of a negative number.");
+        }
+        return Math.sqrt(number);
     }
 
-    public static boolean isPrime(int num) {
-        if (num <= 1)
-            return false;
-        for (int i = 2; i <= Math.sqrt(num); i++)
-            if (num % i == 0)
-                return false;
+    public boolean isPrime(int n) {
+
+        if (n <= 1) return false;
+        if (n <= 3) return true;
+        
+        if (n % 2 == 0 || n % 3 == 0) return false;
+        
+        for (int i = 5; i * i <= n; i = i + 6) {
+            if (n % i == 0 || n % (i + 2) == 0) return false;
+        }
         return true;
     }
 
-    public static long factorial(int n) {
-        if (n < 0)
-            throw new IllegalArgumentException("Factorial is undefined for negative numbers.");
+    public long factorial(int n) { 
+        if (n < 0) {
+            throw new IllegalArgumentException("Invalid input: Factorial is only defined for non-negative numbers.");
+        }
+        
+        if (n == 0) {
+            return 1;
+        }
+        
         long result = 1;
-        for (int i = 2; i <= n; i++)
+        for (int i = 1; i <= n; i++) {
             result *= i;
+        }
         return result;
     }
 }
