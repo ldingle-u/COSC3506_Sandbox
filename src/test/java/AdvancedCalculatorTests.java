@@ -1,9 +1,10 @@
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import src.main.java.AdvancedCalculator;
 
 // Trigger: no-op comment to prompt editor re-index
 
-public class AdvancedCalculatorTest {
+public class AdvancedCalculatorTests {
 
     // -------- power tests --------
 
@@ -11,20 +12,20 @@ public class AdvancedCalculatorTest {
     public void testPowerPositiveExponent() {
         // 2^3 = 8
         double result = AdvancedCalculator.power(2, 3);
-        assertEquals("2^3 should be 8", 8.0, result, 0.0001);
+        assertEquals(8.0, result, 0.0001);
     }
 
     @Test
     public void testPowerNegativeExponent() {
         // 2^-3 = 1/8 = 0.125
         double result = AdvancedCalculator.power(2, -3);
-        assertEquals("2^-3 should be 0.125", 0.125, result, 0.0001);
+        assertEquals(0.125, result, 0.0001);
     }
 
-    @Test(expected = ArithmeticException.class)
+    @Test
     public void testPowerZeroNegativeExponentThrows() {
         // 0^-1 is invalid, should throw an exception
-        AdvancedCalculator.power(0, -1);
+        assertThrows(ArithmeticException.class, () -> AdvancedCalculator.power(0, -1));
     }
 
     // -------- squareRoot tests --------
@@ -32,27 +33,27 @@ public class AdvancedCalculatorTest {
     @Test
     public void testSquareRootPositive() {
         double result = AdvancedCalculator.squareRoot(9);
-        assertEquals("sqrt(9) should be 3", 3.0, result, 0.0001);
+        assertEquals(3.0, result, 0.0001);
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testSquareRootNegativeThrows() {
-        AdvancedCalculator.squareRoot(-4);
+        assertThrows(IllegalArgumentException.class, () -> AdvancedCalculator.squareRoot(-4));
     }
 
     // -------- isPrime tests --------
 
     @Test
     public void testIsPrimeWithPrimeNumbers() {
-        assertTrue("13 should be prime", AdvancedCalculator.isPrime(13));
-        assertTrue("29 should be prime", AdvancedCalculator.isPrime(29));
+        assertTrue(AdvancedCalculator.isPrime(13), "13 should be prime");
+        assertTrue(AdvancedCalculator.isPrime(29), "29 should be prime");
     }
 
     @Test
     public void testIsPrimeWithNonPrimeNumbers() {
-        assertFalse("10 should not be prime", AdvancedCalculator.isPrime(10));
+        assertFalse(AdvancedCalculator.isPrime(10), "10 should not be prime");
         // 1 is not prime
-        assertFalse("1 should not be prime", AdvancedCalculator.isPrime(1));
+        assertFalse(AdvancedCalculator.isPrime(1), "1 should not be prime");
     }
 
     // -------- factorial tests --------
@@ -60,24 +61,24 @@ public class AdvancedCalculatorTest {
     @Test
     public void testFactorialOfFive() {
         long result = AdvancedCalculator.factorial(5);
-        assertEquals("5! should be 120", 120L, result);
+        assertEquals(120L, result);
     }
 
     @Test
     public void testFactorialOfZero() {
         long result = AdvancedCalculator.factorial(0);
-        assertEquals("0! should be 1", 1L, result);
+        assertEquals(1L, result);
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testFactorialOfNegativeThrows() {
-        AdvancedCalculator.factorial(-3);
+        assertThrows(IllegalArgumentException.class, () -> AdvancedCalculator.factorial(-3));
     }
 
     @Test
     public void testFactorialOfTwenty() {
         long result = AdvancedCalculator.factorial(20);
         long expected = 2432902008176640000L;
-        assertEquals("20! should match expected value", expected, result);
+        assertEquals(expected, result);
     }
 }
