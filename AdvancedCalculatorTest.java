@@ -3,10 +3,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class AdvancedCalculatorTest {
 
-    // Power tests
+
     @Test
     void testPowerPositive() {
-        assertEquals(8, AdvancedCalculator.power(2, 3));
+        assertEquals(8, AdvancedCalculator.power(2, 3), 0.0001);
     }
 
     @Test
@@ -16,13 +16,9 @@ class AdvancedCalculatorTest {
 
     @Test
     void testPowerZeroNegative() {
-        try {
-            AdvancedCalculator.power(0, -1);
-            fail("Expected ArithmeticException not thrown");
-        } catch (ArithmeticException e) {}
+        assertThrows(ArithmeticException.class, () -> AdvancedCalculator.power(0, -1));
     }
 
-    // Square root tests
     @Test
     void testSquareRootPositive() {
         assertEquals(3, AdvancedCalculator.squareRoot(9), 0.0001);
@@ -30,13 +26,9 @@ class AdvancedCalculatorTest {
 
     @Test
     void testSquareRootNegative() {
-        try {
-            AdvancedCalculator.squareRoot(-4);
-            fail("Expected IllegalArgumentException not thrown");
-        } catch (IllegalArgumentException e) {}
+        assertThrows(IllegalArgumentException.class, () -> AdvancedCalculator.squareRoot(-4));
     }
 
-    // Prime number tests
     @Test
     void testIsPrime() {
         assertTrue(AdvancedCalculator.isPrime(13));
@@ -45,7 +37,6 @@ class AdvancedCalculatorTest {
         assertFalse(AdvancedCalculator.isPrime(1));
     }
 
-    // Factorial tests
     @Test
     void testFactorialPositive() {
         assertEquals(120, AdvancedCalculator.factorial(5));
@@ -58,10 +49,7 @@ class AdvancedCalculatorTest {
 
     @Test
     void testFactorialNegative() {
-        try {
-            AdvancedCalculator.factorial(-3);
-            fail("Expected IllegalArgumentException not thrown");
-        } catch (IllegalArgumentException e) {}
+        assertThrows(IllegalArgumentException.class, () -> AdvancedCalculator.factorial(-3));
     }
 
     @Test
