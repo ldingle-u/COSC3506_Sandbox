@@ -24,6 +24,11 @@ public class AdvancedCalculator {
     public static long factorial(int n) {
         if (n < 0)
             throw new IllegalArgumentException("Factorial is undefined for negative numbers.");
+
+        //Issue: Factorials greater than 20 exceeds the maximum value of a long
+        //The result will be incorrect, so the method throws an Arithmetic exception
+        if (n > 20) throw new ArithmeticException("Input number is too large, needs to be 20 or below");
+
         long result = 1;
         for (int i = 2; i <= n; i++)
             result *= i;
