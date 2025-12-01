@@ -1,6 +1,8 @@
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+// Trigger: no-op comment to prompt editor re-index
+
 public class AdvancedCalculatorTest {
 
     // -------- power tests --------

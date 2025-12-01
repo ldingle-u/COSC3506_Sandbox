@@ -26,8 +26,12 @@ public class AdvancedCalculator {
         if (n < 0)
             throw new IllegalArgumentException("Factorial is undefined for negative numbers.");
         long result = 1;
-        for (int i = 2; i <= n; i++)
+        for (int i = 2; i <= n; i++) {
+            // Protect against overflow since results beyond 20! do not fit in a long
+            if (result > Long.MAX_VALUE / i)
+                throw new IllegalArgumentException("Factorial result exceeds long range.");
             result *= i;
+        }
         return result;
     }
 }
