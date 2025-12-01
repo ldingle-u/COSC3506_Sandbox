@@ -1,0 +1,91 @@
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class AdvancedCalculatorTest {
+
+
+
+    @Test
+    void testPowerTwoToThree() {
+        double actual = AdvancedCalculator.power(2, 3);
+        assertEquals(8.0, actual, 0.000001);
+    }
+
+    @Test
+    void testPowerTwoToMinusThree() {
+        double actual = AdvancedCalculator.power(2, -3);
+        assertEquals(0.125, actual, 0.000001); // 1 / (2^3)
+    }
+
+    @Test
+    void testPowerZeroNegativeExponentThrows() {
+        assertThrows(ArithmeticException.class, () -> {
+            AdvancedCalculator.power(0, -1);
+        });
+    }
+
+
+
+    @Test
+    void testSquareRootNine() {
+        double actual = AdvancedCalculator.squareRoot(9);
+        assertEquals(3.0, actual, 0.000001);
+    }
+
+    @Test
+    void testSquareRootNegativeNumberThrows() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            AdvancedCalculator.squareRoot(-4);
+        });
+    }
+
+ 
+
+    @Test
+    void testIsPrimeThirteen() {
+        assertTrue(AdvancedCalculator.isPrime(13));
+    }
+
+    @Test
+    void testIsPrimeTen() { 
+        assertFalse(AdvancedCalculator.isPrime(10));
+    }
+
+    @Test
+    void testIsPrimeTwentyNine() {
+        assertTrue(AdvancedCalculator.isPrime(29));
+    }
+
+    @Test
+    void testIsPrimeOne() {
+        assertFalse(AdvancedCalculator.isPrime(1));
+    }
+
+                                      
+
+    @Test
+    void testFactorialFive() {
+        long actual = AdvancedCalculator.factorial(5);
+        assertEquals(120L, actual);
+    }
+
+    @Test
+    void testFactorialZero() {
+        long actual = AdvancedCalculator.factorial(0);
+        assertEquals(1L, actual);
+    }
+
+    @Test
+    void testFactorialNegativeThrows() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            AdvancedCalculator.factorial(-3);
+        });
+    }
+
+    @Test
+    void testFactorialTwentyLooksRight() {
+        long actual = AdvancedCalculator.factorial(20);
+        // 20! = 2,432,902,008,176,640,000
+        assertEquals(2432902008176640000L, actual);
+    }
+}
