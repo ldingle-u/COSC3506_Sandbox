@@ -1,8 +1,8 @@
- //Assignment 4
-//BHANISHA SHERIN THAZEKKAT
-//5148066
-//COSC3506-TESTING 
- package src.test.java;
+// Assignment 4
+// SAUMIL SHEKH
+// COSC3506 - TESTING
+
+package src.test.java;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
@@ -15,19 +15,19 @@ public class AdvancedCalculatorTest {
 
     @Test
     public void testPowerPositiveExponent() {
-        double result = AdvancedCalculator.power(2,3); 
+        double result = AdvancedCalculator.power(2, 3); 
         assertEquals(8.0, result, 1e-9);
     }
 
     @Test
     public void testPowerNegativeExponent() {
-        double result = AdvancedCalculator.power(2,-3);
+        double result = AdvancedCalculator.power(2, -3);
         assertEquals(0.125, result, 1e-9);
     }
 
     @Test(expected = ArithmeticException.class)
     public void testPowerZeroBaseNegativeExponentThrows() {
-        AdvancedCalculator.power(0,-1); 
+        AdvancedCalculator.power(0, -1); 
     }
 
     // ---------- squareRoot() tests ----------
@@ -50,7 +50,7 @@ public class AdvancedCalculatorTest {
         assertTrue(AdvancedCalculator.isPrime(13));
         assertFalse(AdvancedCalculator.isPrime(10));
         assertTrue(AdvancedCalculator.isPrime(29));
-        assertFalse(AdvancedCalculator.isPrime(1));
+        assertFalse(AdvancedCalculator.isPrime(1)); // 1 is not prime
     }
 
     // ---------- factorial() tests ----------
