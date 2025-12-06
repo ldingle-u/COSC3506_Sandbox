@@ -1,41 +1,39 @@
- //Assignment 4
-//BHANISHA SHERIN THAZEKKAT
-//5148066
-//COSC3506-TESTING 
- package src.test.java;
+//Assignment: AdvancedCalculatorTest.java
+//Damodaran N K - 5146540
 
-import static org.junit.Assert.*;
 import org.junit.Test;
-
-import src.main.java.AdvancedCalculator;
+import static org.junit.Assert.*;
 
 public class AdvancedCalculatorTest {
 
-    // ---------- power() tests ----------
+    // -------- power tests --------
 
     @Test
     public void testPowerPositiveExponent() {
-        double result = AdvancedCalculator.power(2,3); 
-        assertEquals(8.0, result, 1e-9);
+        // 2^3 = 8
+        double result = AdvancedCalculator.power(2, 3);
+        assertEquals("2^3 should be 8", 8.0, result, 0.0001);
     }
 
     @Test
     public void testPowerNegativeExponent() {
-        double result = AdvancedCalculator.power(2,-3);
-        assertEquals(0.125, result, 1e-9);
+        // 2^-3 = 1/8 = 0.125
+        double result = AdvancedCalculator.power(2, -3);
+        assertEquals("2^-3 should be 0.125", 0.125, result, 0.0001);
     }
 
     @Test(expected = ArithmeticException.class)
-    public void testPowerZeroBaseNegativeExponentThrows() {
-        AdvancedCalculator.power(0,-1); 
+    public void testPowerZeroNegativeExponentThrows() {
+        // 0^-1 is invalid, should throw an exception
+        AdvancedCalculator.power(0, -1);
     }
 
-    // ---------- squareRoot() tests ----------
+    // -------- squareRoot tests --------
 
     @Test
     public void testSquareRootPositive() {
         double result = AdvancedCalculator.squareRoot(9);
-        assertEquals(3.0, result, 1e-9);
+        assertEquals("sqrt(9) should be 3", 3.0, result, 0.0001);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -43,38 +41,44 @@ public class AdvancedCalculatorTest {
         AdvancedCalculator.squareRoot(-4);
     }
 
-    // ---------- isPrime() tests ----------
+    // -------- isPrime tests --------
 
     @Test
-    public void testIsPrimeValues() {
-        assertTrue(AdvancedCalculator.isPrime(13));
-        assertFalse(AdvancedCalculator.isPrime(10));
-        assertTrue(AdvancedCalculator.isPrime(29));
-        assertFalse(AdvancedCalculator.isPrime(1));
+    public void testIsPrimeWithPrimeNumbers() {
+        assertTrue("13 should be prime", AdvancedCalculator.isPrime(13));
+        assertTrue("29 should be prime", AdvancedCalculator.isPrime(29));
     }
 
-    // ---------- factorial() tests ----------
+    @Test
+    public void testIsPrimeWithNonPrimeNumbers() {
+        assertFalse("10 should not be prime", AdvancedCalculator.isPrime(10));
+        // 1 is not prime
+        assertFalse("1 should not be prime", AdvancedCalculator.isPrime(1));
+    }
+
+    // -------- factorial tests --------
 
     @Test
-    public void testFactorial5() {
+    public void testFactorialOfFive() {
         long result = AdvancedCalculator.factorial(5);
-        assertEquals(120L, result);
+        assertEquals("5! should be 120", 120L, result);
     }
 
     @Test
-    public void testFactorial0() {
+    public void testFactorialOfZero() {
         long result = AdvancedCalculator.factorial(0);
-        assertEquals(1L, result);
+        assertEquals("0! should be 1", 1L, result);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testFactorialNegativeThrows() {
+    public void testFactorialOfNegativeThrows() {
         AdvancedCalculator.factorial(-3);
     }
 
     @Test
-    public void testFactorial20() {
+    public void testFactorialOfTwenty() {
         long result = AdvancedCalculator.factorial(20);
-        assertEquals(2432902008176640000L, result);
+        long expected = 2432902008176640000L;
+        assertEquals("20! should match expected value", expected, result);
     }
 }
