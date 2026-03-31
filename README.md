@@ -7,3 +7,4 @@ This is used as a sandbox assignment. Typical best practices apply.
 Constraints:
 1) Do not merge your feature branch into main directly.
 2) Keep your dedicated branch as a branch, do not issue a pull request to merge into main.
+3) Make sure you identify your branch through the following convention: studentName_testBranch
