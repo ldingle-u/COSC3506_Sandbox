@@ -3,6 +3,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.math.BigInteger;
+
 public class TestAdvancedCalculator {
     
     @Test
@@ -65,4 +67,31 @@ public class TestAdvancedCalculator {
         boolean testIsPrime1 = advancedCalculator.isPrime(1);
         assertFalse(testIsPrime1);
     }
+
+    @Test
+    public void testFactorial1() {
+        AdvancedCalculator advancedCalculator = new AdvancedCalculator();
+        int testFactorial1 = advancedCalculator.factorial(5);
+        assertEquals(120, testFactorial1, 0.001);
+    }
+
+    @Test
+    public void testFactorial2() {
+        AdvancedCalculator advancedCalculator = new AdvancedCalculator();
+        int testFactorial2 = advancedCalculator.factorial(0);
+        assertEquals(1, testFactorial2, 0.001);
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void testFactorial3() {
+        AdvancedCalculator advancedCalculator = new AdvancedCalculator();
+        advancedCalculator.factorial(-3);
+    }
+
+    @Test (expected = ArithmeticException.class)
+    public void testFactorial4() {
+        AdvancedCalculator advancedCalculator = new AdvancedCalculator();
+        advancedCalculator.factorial(20);
+    }
+
 }
