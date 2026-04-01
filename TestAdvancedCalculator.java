@@ -1,5 +1,7 @@
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class TestAdvancedCalculator {
     
@@ -34,5 +36,33 @@ public class TestAdvancedCalculator {
     public void testSquareRoot2() {
         AdvancedCalculator advancedCalculator = new AdvancedCalculator();
         advancedCalculator.squareRoot(-4);
+    }
+
+    @Test
+    public void testIsPrime1() {
+        AdvancedCalculator advancedCalculator = new AdvancedCalculator();
+        boolean testIsPrime1 = advancedCalculator.isPrime(13);
+        assertTrue(testIsPrime1);
+    }
+
+    @Test
+    public void testIsPrime2() {
+        AdvancedCalculator advancedCalculator = new AdvancedCalculator();
+        boolean testIsPrime1 = advancedCalculator.isPrime(10);
+        assertFalse(testIsPrime1);
+    }
+
+    @Test
+    public void testIsPrime3() {
+        AdvancedCalculator advancedCalculator = new AdvancedCalculator();
+        boolean testIsPrime1 = advancedCalculator.isPrime(29);
+        assertTrue(testIsPrime1);
+    }
+
+    @Test
+    public void testIsPrime4() {
+        AdvancedCalculator advancedCalculator = new AdvancedCalculator();
+        boolean testIsPrime1 = advancedCalculator.isPrime(1);
+        assertFalse(testIsPrime1);
     }
 }
