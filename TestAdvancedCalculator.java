@@ -3,8 +3,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import java.math.BigInteger;
-
 public class TestAdvancedCalculator {
     
     @Test
@@ -21,7 +19,7 @@ public class TestAdvancedCalculator {
         assertEquals(0.125, testPower2, 0);
     }
 
-    @Test (expected = IllegalArgumentException.class)
+    @Test (expected = ArithmeticException.class)
     public void testPower3() {
         AdvancedCalculator advancedCalculator = new AdvancedCalculator();
         advancedCalculator.power(0, -1);
