@@ -1,71 +1,52 @@
-import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
+public class AdvancedCalculator {
 
-public class AdvancedCalculatorTest {
+    // Fixed issue: power(0, -1) now throws exception
+    public double power(double base, int exponent) {
+        if (base == 0 && exponent < 0) {
+            throw new IllegalArgumentException("0 cannot have negative exponent");
+        }
 
-    AdvancedCalculator calc = new AdvancedCalculator();
+        if (exponent < 0) {
+            return 1 / Math.pow(base, -exponent);
+        }
 
-    // POWER
-    @Test
-    void testPowerPositive() {
-        assertEquals(8, calc.power(2,3));
+        return Math.pow(base, exponent);
     }
 
-    @Test
-    void testPowerNegativeExponent() {
-        assertEquals(0.125, calc.power(2,-3), 0.0001);
+    public double squareRoot(double number) {
+        if (number < 0) {
+            throw new IllegalArgumentException("Cannot calculate square root of a negative number");
+        }
+        return Math.sqrt(number);
     }
 
-    @Test
-    void testPowerZeroNegative() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            calc.power(0,-1);
-        });
+    // Fixed issue: corrected loop condition to check till sqrt(number)
+    public boolean isPrime(int number) {
+        if (number <= 1) {
+            return false;
+        }
+
+        for (int i = 2; i <= Math.sqrt(number); i++) {
+            if (number % i == 0) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
-    // SQUARE ROOT
-    @Test
-    void testSquareRootPositive() {
-        assertEquals(3, calc.squareRoot(9), 0.0001);
-    }
+    // Fixed issue: factorial changed from int to long to avoid overflow
+    public long factorial(int number) {
+        if (number < 0) {
+            throw new IllegalArgumentException("Factorial is undefined for negative numbers");
+        }
 
-    @Test
-    void testSquareRootNegative() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            calc.squareRoot(-4);
-        });
-    }
+        long result = 1;
 
-    // IS PRIME
-    @Test
-    void testIsPrime() {
-        assertTrue(calc.isPrime(13));
-        assertFalse(calc.isPrime(10));
-        assertTrue(calc.isPrime(29));
-        assertFalse(calc.isPrime(1));
-    }
+        for (int i = 1; i <= number; i++) {
+            result *= i;
+        }
 
-    // FACTORIAL
-    @Test
-    void testFactorialNormal() {
-        assertEquals(120, calc.factorial(5));
-    }
-
-    @Test
-    void testFactorialZero() {
-        assertEquals(1, calc.factorial(0));
-    }
-
-    @Test
-    void testFactorialNegative() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            calc.factorial(-3);
-        });
-    }
-
-    @Test
-    void testFactorialLarge() {
-        assertEquals(2432902008176640000L, (long) calc.factorial(20));
+        return result;
     }
 }
