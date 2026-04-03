@@ -5,20 +5,15 @@ public class AdvancedCalculator {
     public double power(double base, int exponent) {
 
         /*
-        Issue found: 0^-1 had a result of infinity by doing 1.0/0.0
+        Issue found: 0^-1 had a result of infinity
 
-        Now when the base is 0, the result is 0 by default
+        Now when the base is 0 and the exponent is less than 0, the program
+        trows and exception
+        */
 
-        I also added an if statement that returns 1 of the exponent is 0
-         */
-
-        if (exponent == 0)
+        if (base == 0 && exponent <0)
         {
-            return 1;
-        }
-        else if (base == 0)
-        {
-            return 0;
+            throw new IllegalArgumentException("Infinity");
         }
         else if (exponent < 0) {
             return 1 / Math.pow(base, -exponent);

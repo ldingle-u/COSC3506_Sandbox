@@ -12,9 +12,11 @@ class AdvancedCalculatorTest
         double division = 1.0/8.0;
         assertEquals(division, calculator.power(2, -3));
 
-        assertEquals(0, calculator.power(0, -1));
+        assertThrows(IllegalArgumentException.class,
+                ()-> calculator.power(0, -1));
 
         //Extra test
+        assertEquals(0, calculator.power(0, 1));
         assertEquals(1, calculator.power(879247, 0));
     }
 
