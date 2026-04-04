@@ -1,0 +1,12 @@
+Compile: javac -cp ".;junit-4.13.2.jar;hamcrest-core-1.3.jar" AdvancedCalculator.java AdvancedCalculatorTest.java
+
+Run: java -cp ".;junit-4.13.2.jar;hamcrest-core-1.3.jar" org.junit.runner.JUnitCore AdvancedCalculatorTest
+
+Output: 
+JUnit version 4.13.2
+..........
+Time: 0.011
+
+OK (10 tests)
+
+Issues: Issues are corrected and commented.
