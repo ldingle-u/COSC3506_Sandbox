@@ -32,11 +32,12 @@ public class AdvancedCalculator {
     }
 
     // Calculates factorial of a number
-    public int factorial(int number) {
+    public long factorial(int number) {  //has to change int to long
         if (number < 0) {
             throw new IllegalArgumentException("Factorial is undefined for negative numbers");
         }
-        int result = 1;
+        long result = 1; // --> got an missed test case, change int to long because 
+                        //20! is way too big for an int (int is only reached 2.1billion), it get overflow and result in -2102132736
         // Iteratively calculates factorial in an ascending fashion
         for (int i = 1; i <= number; i++) {
             result *= i;
