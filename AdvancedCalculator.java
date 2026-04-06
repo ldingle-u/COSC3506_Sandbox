@@ -3,6 +3,11 @@ public class AdvancedCalculator {
 
     // Calculates the power of a number
     public double power(double base, int exponent) {
+        //Base cannot be zero when exponent is negative as it requires division by 0
+        // Added an if statement to throw an exception
+        if (base == 0 && exponent < 0) {
+            throw new IllegalArgumentException(" Exponent cannot be negative when base is 0");
+        }
         if (exponent < 0) {
             return 1 / Math.pow(base, -exponent);
         }
@@ -32,11 +37,15 @@ public class AdvancedCalculator {
     }
 
     // Calculates factorial of a number
-    public int factorial(int number) {
+
+
+     //int is too small for 20! and causes an overflow
+     //using long data type can fix the issue
+    public long factorial(int number) {
         if (number < 0) {
             throw new IllegalArgumentException("Factorial is undefined for negative numbers");
         }
-        int result = 1;
+        long result = 1;
         // Iteratively calculates factorial in an ascending fashion
         for (int i = 1; i <= number; i++) {
             result *= i;
