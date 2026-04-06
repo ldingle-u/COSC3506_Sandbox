@@ -2,9 +2,11 @@
 public class AdvancedCalculator {
 
     // Calculates the power of a number
+    //error (testpowerexception method) - to have base 0 and a negative exponent and throw the exception
+    // the "return 1 / Math.pow(base, -exponent);" is removed as "return Math.pow(base, exponent);" replaced everything
     public double power(double base, int exponent) {
-        if (exponent < 0) {
-            return 1 / Math.pow(base, -exponent);
+        if (base == 0 && exponent < 0) {
+            throw new ArithmeticException("Zero base with negative exponent");
         }
         // Return a double, represents base raised to the exponent
         return Math.pow(base, exponent);
@@ -32,11 +34,12 @@ public class AdvancedCalculator {
     }
 
     // Calculates factorial of a number
-    public int factorial(int number) {
+    public long factorial(int number) {
         if (number < 0) {
             throw new IllegalArgumentException("Factorial is undefined for negative numbers");
         }
-        int result = 1;
+        //using long data type to prevent -2102132736 overflow error
+        long result = 1;
         // Iteratively calculates factorial in an ascending fashion
         for (int i = 1; i <= number; i++) {
             result *= i;
