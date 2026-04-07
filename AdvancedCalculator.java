@@ -1,44 +1,42 @@
-//Calculator that calculates factorial, exponents and checks if a number is prime
 public class AdvancedCalculator {
 
-    // Calculates the power of a number
+    // POWER METHOD
     public double power(double base, int exponent) {
-        if (exponent < 0) {
-            return 1 / Math.pow(base, -exponent);
+        if (base == 0 && exponent < 0) {
+            throw new IllegalArgumentException("0 cannot have negative exponent");
         }
-        // Return a double, represents base raised to the exponent
         return Math.pow(base, exponent);
     }
 
-    // Calculates the square root of a number
-    public double squareRoot(double number) {
-        if (number < 0) {
-            throw new IllegalArgumentException("Cannot calculate square root of a negative number");
+    // SQUARE ROOT METHOD
+    public double squareRoot(double num) {
+        if (num < 0) {
+            throw new IllegalArgumentException("Negative number not allowed");
         }
-        return Math.sqrt(number);
+        return Math.sqrt(num);
     }
 
-    // Checks if a number is prime
-    public boolean isPrime(int number) {
-        if (number <= 1) {
+    // PRIME CHECK METHOD
+    public boolean isPrime(int num) {
+        if (num <= 1) {
             return false;
         }
-        for (int i = 2; i < Math.sqrt(number); i++) {
-            if (number % i == 0) {
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
                 return false;
             }
         }
         return true;
     }
 
-    // Calculates factorial of a number
-    public int factorial(int number) {
-        if (number < 0) {
-            throw new IllegalArgumentException("Factorial is undefined for negative numbers");
+    // FACTORIAL METHOD
+    public long factorial(int num) {
+        if (num < 0) {
+            throw new IllegalArgumentException("Negative number not allowed");
         }
-        int result = 1;
-        // Iteratively calculates factorial in an ascending fashion
-        for (int i = 1; i <= number; i++) {
+
+        long result = 1;
+        for (int i = 1; i <= num; i++) {
             result *= i;
         }
         return result;
