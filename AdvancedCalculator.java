@@ -3,6 +3,14 @@ public class AdvancedCalculator {
 
     // Calculates the power of a number
     public double power(double base, int exponent) {
+        /*
+        Solution 1: Added a IllegalArgumentException
+        to catch when zero is raised to a negative exponent
+        as previously the result would return Infinity.
+        */
+        if (exponent < 0 && base == 0) {
+            throw new IllegalArgumentException("Zero cannot be raised to a negative exponent");
+        }
         if (exponent < 0) {
             return 1 / Math.pow(base, -exponent);
         }
@@ -23,7 +31,12 @@ public class AdvancedCalculator {
         if (number <= 1) {
             return false;
         }
-        for (int i = 2; i < Math.sqrt(number); i++) {
+        /*
+        Solution 2: Re-wrote the logic of the isPrime
+        to include perfect prime numbers
+        as previously they would return a logic error
+         */
+        for (int i = 2; i * i <= number; i++) {
             if (number % i == 0) {
                 return false;
             }
@@ -32,13 +45,18 @@ public class AdvancedCalculator {
     }
 
     // Calculates factorial of a number
-    public int factorial(int number) {
+    /*
+    Solution 3: replaced int variable with double
+    to allow for larger sized factorials
+    as fac(20) was too large and returned an overflow
+     */
+    public double factorial(double number) {
         if (number < 0) {
             throw new IllegalArgumentException("Factorial is undefined for negative numbers");
         }
-        int result = 1;
+        double result = 1;
         // Iteratively calculates factorial in an ascending fashion
-        for (int i = 1; i <= number; i++) {
+        for (double i = 1; i <= number; i++) {
             result *= i;
         }
         return result;
