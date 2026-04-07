@@ -3,7 +3,10 @@ public class AdvancedCalculator {
 
     // Calculates the power of a number
     public double power(double base, int exponent) {
-        if (exponent < 0) {
+        if (base == 0 && exponent < 0) { //power(0, -1) needed to throw an exception.
+            throw new IllegalArgumentException("Zero cannot be raised to a negative exponent");
+        }
+        if (exponent < 0) { 
             return 1 / Math.pow(base, -exponent);
         }
         // Return a double, represents base raised to the exponent
@@ -23,7 +26,7 @@ public class AdvancedCalculator {
         if (number <= 1) {
             return false;
         }
-        for (int i = 2; i < Math.sqrt(number); i++) {
+        for (int i = 2; i <= Math.sqrt(number); i++) { //isPrime() needed correction for perfect square values.
             if (number % i == 0) {
                 return false;
             }
@@ -32,11 +35,11 @@ public class AdvancedCalculator {
     }
 
     // Calculates factorial of a number
-    public int factorial(int number) {
-        if (number < 0) {
+    public long factorial(int number) {
+        if (number < 0) { 
             throw new IllegalArgumentException("Factorial is undefined for negative numbers");
         }
-        int result = 1;
+        long result = 1; //factorial(20) required a larger return type to avoid overflow.
         // Iteratively calculates factorial in an ascending fashion
         for (int i = 1; i <= number; i++) {
             result *= i;
