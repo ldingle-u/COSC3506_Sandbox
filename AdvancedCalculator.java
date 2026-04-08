@@ -1,44 +1,45 @@
-//Calculator that calculates factorial, exponents and checks if a number is prime
 public class AdvancedCalculator {
 
-    // Calculates the power of a number
-    public double power(double base, int exponent) {
-        if (exponent < 0) {
-            return 1 / Math.pow(base, -exponent);
+    // Power: handles negative exponents, returns double, throws for 0^negative
+    public double power(int base, int exponent) {
+        if (base == 0 && exponent < 0) {
+            throw new ArithmeticException("Cannot raise 0 to a negative exponent");
         }
-        // Return a double, represents base raised to the exponent
-        return Math.pow(base, exponent);
+        if (exponent == 0) return 1;
+        double result = 1.0;
+        int absExp = Math.abs(exponent);
+        for (int i = 0; i < absExp; i++) {
+            result *= base;
+        }
+        return exponent > 0 ? result : 1.0 / result;
     }
 
-    // Calculates the square root of a number
-    public double squareRoot(double number) {
-        if (number < 0) {
-            throw new IllegalArgumentException("Cannot calculate square root of a negative number");
+    // SquareRoot: throws exception for negative input
+    public double squareRoot(int value) {
+        if (value < 0) {
+            throw new IllegalArgumentException("Cannot take square root of negative number");
         }
-        return Math.sqrt(number);
+        return Math.sqrt(value);
     }
 
-    // Checks if a number is prime
-    public boolean isPrime(int number) {
-        if (number <= 1) {
-            return false;
-        }
-        for (int i = 2; i < Math.sqrt(number); i++) {
-            if (number % i == 0) {
-                return false;
-            }
+    // IsPrime: correctly identifies primes, 1 and negatives return false
+    public boolean isPrime(int n) {
+        if (n <= 1) return false;
+        if (n == 2) return true;
+        if (n % 2 == 0) return false;
+        for (int i = 3; i * i <= n; i += 2) {
+            if (n % i == 0) return false;
         }
         return true;
     }
 
-    // Calculates factorial of a number
-    public int factorial(int number) {
-        if (number < 0) {
-            throw new IllegalArgumentException("Factorial is undefined for negative numbers");
+    // Factorial: uses long, throws for negatives, computes up to 20! correctly
+    public long factorial(int n) {
+        if (n < 0) {
+            throw new IllegalArgumentException("Factorial not defined for negative numbers");
         }
-        int result = 1;
-        // Iteratively calculates factorial in an ascending fashion
-        for (int i = 1; i <= number; i++) {
+        long result = 1;
+        for (int i = 2; i <= n; i++) {
             result *= i;
         }
         return result;
