@@ -5,7 +5,7 @@ public class AdvancedCalculatorTest {
 
     AdvancedCalculator calc = new AdvancedCalculator();
 
-}
+
 @Test
 void testPowerPositive() {
     assertEquals(8, calc.power(2, 3));
