@@ -1,4 +1,6 @@
-//Calculator that calculates factorial, exponents and checks if a number is prime
+// Calculator that calculates factorial, exponents and checks if a number is prime
+import java.math.BigInteger;
+
 public class AdvancedCalculator {
 
     // Calculates the power of a number
@@ -19,11 +21,13 @@ public class AdvancedCalculator {
     }
 
     // Checks if a number is prime
+    // FIX: Changed loop condition from i < Math.sqrt(number) to i <= Math.sqrt(number)
+    // The previous condition would incorrectly identify perfect squares as prime
     public boolean isPrime(int number) {
         if (number <= 1) {
             return false;
         }
-        for (int i = 2; i < Math.sqrt(number); i++) {
+        for (int i = 2; i <= Math.sqrt(number); i++) {
             if (number % i == 0) {
                 return false;
             }
@@ -32,14 +36,15 @@ public class AdvancedCalculator {
     }
 
     // Calculates factorial of a number
-    public int factorial(int number) {
+    // FIX: Changed return type from int to BigInteger to handle large values like 20!
+    // Factorial of 20 exceeds int max value (2,147,483,647)
+    public BigInteger factorial(int number) {
         if (number < 0) {
             throw new IllegalArgumentException("Factorial is undefined for negative numbers");
         }
-        int result = 1;
-        // Iteratively calculates factorial in an ascending fashion
+        BigInteger result = BigInteger.ONE;
         for (int i = 1; i <= number; i++) {
-            result *= i;
+            result = result.multiply(BigInteger.valueOf(i));
         }
         return result;
     }
